@@ -10,6 +10,10 @@ import (
 	"github.com/gorilla/mux"
 )
 
+const (
+	Port = ":8000"
+)
+
 // Book struct (Model)
 type Book struct {
 	ID     string  `json:"id"`
@@ -104,5 +108,7 @@ func main() {
 	r.HandleFunc("/books/{id}", deleteBook).Methods("DELETE")
 
 	// Start server
-	log.Fatal(http.ListenAndServe(":8000", r))
+
+	log.Printf("Running Http server at %v", Port)
+	log.Fatal(http.ListenAndServe(Port, r))
 }

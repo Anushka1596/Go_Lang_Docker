@@ -9,9 +9,11 @@ COPY  . ./
 RUN go mod download
 
 # Build the Go app
-RUN go install github.com/Anushka1596/Go_Lang_Docker
+#RUN go install github.com/Anushka1596/Go_Lang_Docker
+RUN go install gaurav
 
 EXPOSE 8000
 
 
-ENTRYPOINT ["/go/bin/Go_Lang_Docker"]
+#ENTRYPOINT ["/go/bin/Go_Lang_Docker"]
+ENTRYPOINT ["/go/bin/gaurav"]

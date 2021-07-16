@@ -1,9 +1,7 @@
-FROM golang:latest
+FROM golang:1.15 As builder
 
-# RUN mkdir /app 
-
-# COPY go.mod .
-# COPY go.sum .
+#installing ca-certificates
+RUN apt update && apt install ca-certificates
 
 WORKDIR /app
 
@@ -21,11 +19,12 @@ COPY . .
 # COPY *.go .
 
 # Build the Go app
-RUN go build -o /app 
+RUN go build -tags static_all
+
 
 # RUN chmod +x /app
 
 EXPOSE 8000
 
 
-ENTRYPOINT ["/app"]
+ENTRYPOINT ["./golangdocker"]

@@ -1,4 +1,4 @@
-module go
+module golangdocker
 
 go 1.15
 
